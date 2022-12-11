@@ -23,22 +23,33 @@ function App() {
     }
   };
 
-  const getNewCocktails = async () => {
-    try {
-      const response = await fetch(url + cocktailInput);
-      const data = await response.json();
-      // console.log(data.drinks);
-      setCocktails(data.drinks);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getNewCocktails = async () => {
+  //   try {
+  //     const response = await fetch(url + cocktailInput);
+  //     const data = await response.json();
+  //     // console.log(data.drinks);
+  //     setCocktails(data.drinks);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   useEffect(() => {
     getInitialCocktails();
   }, []);
 
   useEffect(() => {
+    const getNewCocktails = async () => {
+      try {
+        const response = await fetch(url + cocktailInput);
+        const data = await response.json();
+        // console.log(data.drinks);
+        setCocktails(data.drinks);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     getNewCocktails();
   }, [cocktailInput]);
 
